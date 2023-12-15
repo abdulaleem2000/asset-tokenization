@@ -1,0 +1,60 @@
+$main-color: #725DFF
+$main-contrast: #4B36D2
+$grayed-text: #AEAEAE
+$border-color: #E8E8E8
+$container-color: #FBFBFF
+$opacity-gray: #F1F1F1
+$light-green: #2AD159
+
+$menu-bg-color: #F9F9F9
+$main-radius: 0.3rem
+$containers-radius: 1.7rem
+$button-padding: 0.6rem 1.4rem
+$input-stroke: #DDD7FF
+
+$black: #000000
+$white: #FFFFFF
+$white-contrast: #FDFDFD
+
+$sections-margin: 1.5rem
+$sections-padding: 1rem
+
+$menu-opt-margin-right: 1rem
+
+#contentHeader, .contentHeaderPart
+    display: flex
+
+#contentHeader
+    flex-direction: column
+    justify-content: space-between
+
+.contentHeaderPart
+    flex-grow: 1
+    align-items: center
+    &:last-child
+        justify-content: flex-end
+        *
+            margin: 0 1rem
+
+#completeUserAlert
+    display: flex
+    align-items: center
+    margin-bottom: 2rem
+    img
+        margin-right: 1rem
+
+.searcher
+    display: flex
+    align-content: center
+    justify-content: space-between
+    border-radius: $main-radius
+    background-color: $white-contrast
+    border: 1px solid $grayed-text
+    padding: $button-padding
+    input
+        border: none
+    div
+        display: flex
+        align-content: center
+    div > img
+        margin-right: 0.5rem

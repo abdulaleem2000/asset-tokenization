@@ -1,0 +1,44 @@
+@import "@/styles/variables.module"
+
+#dashboardView
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr 0.1fr
+    grid-template-areas: "alias-menu alias-content alias-chat"
+    height: 100vh
+   
+
+.mainPart
+    display: flex
+    flex-direction: row
+   
+    
+.contentHeaderS
+    padding: 1rem
+    width: 80vw
+//user details card 
+#userDetails
+    background-color: $container-color
+    border-radius: 1rem
+    min-width: 25rem
+    margin-right: 1rem
+    max-height: 70vh
+
+.headerUserDetails
+    display: flex
+    flex-direction: row
+    padding: 1rem
+    align-items: center
+
+.userDetailsMainBody
+    padding: 1rem
+
+.userDetailsText
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    margin-top: 2rem
+
+#mainBody
+    display: flex
+    flex-direction: row

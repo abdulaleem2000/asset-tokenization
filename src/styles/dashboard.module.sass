@@ -1,0 +1,224 @@
+@import "@/styles/variables.module"
+
+#dashboardView
+    display: grid
+    grid-template-columns: 0.2fr 1fr 0.3fr
+    grid-template-rows: 1fr
+    grid-template-areas: "alias-menu alias-content alias-chat"
+    height: 100vh
+
+#contentSection
+    display: flex
+    flex-direction: column
+    padding: $sections-padding
+
+.grayedText
+    opacity: 0.7
+
+.searcher
+    display: flex
+    align-content: center
+    justify-content: space-between
+    border-radius: $main-radius
+    background-color: $white-contrast
+    border: 1px solid $grayed-text
+    padding: $button-padding
+    input
+        border: none
+    div
+        display: flex
+        align-content: center
+    div > img
+        margin-right: 0.5rem
+
+// CONTENT SECTION //
+
+#contentSection
+    a
+        color: $main-color
+
+#contentBody, #userWallet
+    display: flex
+    flex-direction: column
+
+#contentBody
+    heigth: 100vh
+
+#topContentBody, #bottomContentBody
+    flex-grow: 1
+
+#topContentBody
+    display: flex
+    flex-direction: row
+
+.topContentPiece
+    flex-grow: 1
+
+// USER WALLET CARD //
+
+#userWallet
+    background-color: $main-color
+    width: 400px
+    margin-bottom: 2rem
+    color: $white
+    padding: $button-padding
+    border-radius: $containers-radius
+    box-shadow: 7px 11px 2px -2px rgba(238,238,238,0.98)
+
+.walletPiece
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0.7rem 0
+
+#walletCurrency
+    display: flex
+    img
+        margin-right: 1rem
+    div
+        display: flex
+        flex-direction: column
+
+#walletBalance
+    display: flex
+    flex-direction: column
+    div
+        display: flex
+        align-items: flex-end
+        margin: 0.5rem 0
+        h2
+            margin-right: 1rem
+
+// TRAINING CARD //
+
+#trainingContainer
+    display: flex
+    flex-direction: column
+    padding: $button-padding
+    border-radius: $containers-radius
+    width: 400px
+    background-color: $container-color
+
+#trainingTop
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0.5rem 0
+
+#trainingLessons
+    display: flex
+    flex-direction: column
+    margin: 0.5rem 0
+
+.lessonTaken
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0.5rem 0
+
+.lessonInfo
+    display: flex
+    align-items: center
+    img
+        margin-right: 1rem
+    div
+        display: flex
+        flex-direction: column
+        h4
+            margin-bottom: 0.4rem
+
+.lessonProgressing, .lessonCompleted
+    padding: 0.5rem
+    color: $white
+    border-radius: $containers-radius
+
+.lessonCompleted
+    background-color: $light-green
+
+.lessonProgressing
+    background-color: $main-color
+
+// INVESTMENTS CARD //
+
+#investmentsContainer
+    display: flex
+    flex-direction: column
+    border-radius: $containers-radius
+    padding: $button-padding
+    background-color: $container-color
+
+.containerTop
+    display: flex
+    justify-content: space-between
+    align-items: center
+    div
+        &:last-child
+            display: flex
+            p
+                margin-right: 0.5rem
+
+.userInvestment, .investmentPart
+    display: flex
+
+.userInvestment
+    border-radius: $containers-radius
+    padding: $button-padding
+    justify-content: space-between
+    align-items: center
+    margin: 0.5rem 0
+
+.investmentPart
+    flex-grow: 1
+    align-items: center
+    img
+        margin-right: 5%
+        border-radius: $main-radius
+    div
+        h4
+            margin-bottom: 0.2rem
+    &:last-child
+        justify-content: space-between
+        flex-grow: 0.5
+        div
+            &:last-child
+                border: 1px solid $white
+                padding: 0.4rem
+                border-radius: $containers-radius
+
+#investmentsButtons
+    display: flex
+    justify-content: flex-end
+    button
+        margin-left: 0.5rem
+
+// TRANSACTION STADISTICS //
+
+#transactionStadisticsContainer
+    display: flex
+    flex-direction: column
+    padding: $button-padding
+    border-radius: $containers-radius
+    background-color: $container-color
+
+#tradesFiltersContainer, .filterPart
+    display: flex
+    flex-direction: row
+    align-items: center
+
+#tradesFiltersContainer
+    justify-content: space-between
+    margin: 1.5rem 0
+
+.filterPart
+    img
+        margin-right: 0.5rem
+    div
+        display: flex
+        padding: $button-padding
+        border-radius: $main-radius
+        margin-right: 0.5rem
+
+.tradesInvestmentOption
+    padding: 0.8rem !important
+    border: 1px solid $grayed-text
+    border-radius: $containers-radius !important

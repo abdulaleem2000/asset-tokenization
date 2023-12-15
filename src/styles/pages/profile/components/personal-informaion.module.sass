@@ -1,0 +1,120 @@
+$main-color: #725DFF
+$main-contrast: #4B36D2
+$grayed-text: #AEAEAE
+$border-color: #E8E8E8
+$container-color: #FBFBFF
+$opacity-gray: #F1F1F1
+$light-green: #2AD159
+
+$menu-bg-color: #F9F9F9
+$main-radius: 0.3rem
+$containers-radius: 1.7rem
+$button-padding: 0.6rem 1.4rem
+$input-stroke: #DDD7FF
+
+$black: #000000
+$white: #FFFFFF
+$white-contrast: #FDFDFD
+$legal-requirement-color: #F5F3FF
+
+$sections-margin: 1.5rem
+$sections-padding: 1rem
+
+$menu-opt-margin-right: 1rem
+
+#profileView
+    display: grid
+    grid-template-columns: 0.15fr 1fr
+    grid-template-rows: 1fr
+    grid-template-areas: "alias-menu alias-profile"
+    height: 100vh
+
+#personalInformationSection
+    display: flex
+    flex-direction: column
+    padding: $sections-padding
+
+#topForm
+    display: flex
+    align-items: center
+    padding: 2rem
+    color: white
+    background-color: $main-color
+    border-top-left-radius: $containers-radius
+    border-top-right-radius: $containers-radius
+    img
+        margin-right: 5%
+
+#personalInformationForm
+    display: flex
+    flex-direction: column
+    padding: $button-padding
+    section
+        display: flex
+        flex-wrap: wrap
+    div
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        width: 33%
+        input
+            width: 80%
+    button
+        width: 20%
+        color: $white
+
+#personalInformationForm > div
+
+.checkboxesContainer
+    display: flex
+    flex-direction: row !important
+    justify-content: space-around !important
+    align-items: center
+    width: 60% !important
+    div
+        display: flex
+        flex-direction: row !important
+        align-items: center
+    input
+        margin-right: 0.6rem
+        border-radius: 50% !important
+
+#legalDocumentation
+    display: flex
+    flex-direction: column
+    margin: 1rem 0
+
+#legalRequirementsContainer
+    display: flex
+    flex-direction: row !important
+    width: 100% !important
+    justify-content: flex-start !important
+    margin: 1rem 0
+
+.legalRequirement
+    display: flex
+    flex-direction: row
+    align-items: center
+    background-color: $legal-requirement-color
+    padding: $button-padding
+    border-radius: $containers-radius
+    border: 1px dashed $main-color
+    margin: 0 0.3rem
+    img
+        margin-right: 15%
+    div
+        display: flex
+        flex-direction: column
+        width: 100% !important
+        p
+            color: $main-color
+        *
+            margin: 2% 0
+
+#h2
+    margin: 1rem
+
+.buttonForm
+    margin-top: 2rem
+    align-self: flex-end 
+    

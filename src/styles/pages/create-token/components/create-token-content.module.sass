@@ -1,0 +1,30 @@
+@import "@/styles/variables.module"
+
+#createContentView
+    display: flex
+    flex-direction: column
+    margin: $sections-margin
+
+#creationSelector
+    display: flex
+    div
+        margin-right: 2rem
+        padding: 1rem 0.2rem
+        p
+            color: $grayed-text
+
+#createTokenOption, #createPresaleOption, #createLockerOption, #createNftOption, #createAirdropOption
+    text-align: center
+
+.creationOption
+    border-bottom: 2px solid white
+    &:hover
+        border-bottom: 2px solid $grayed-text
+        cursor: pointer
+    &:active
+        transform: scale(1.05)
+
+.currentCreationOption
+    border-bottom: 2px solid $main-color !important
+    p
+        color: $main-color !important

@@ -1,0 +1,59 @@
+@import "../../../variables.module"
+
+#investment
+    display: flex
+    flex-direction: column
+    border-radius: $containers-radius
+    overflow: hidden
+    min-height: 379px
+    min-width: 270px
+    margin: 0.7rem
+
+#imageAndStatusUser
+    background-image: url("/dashboard/content/girl.jpeg")
+    background-size: cover
+    background-position: center
+    flex-grow: 1
+    padding: $sections-padding
+    display: flex
+    align-items: flex-end
+
+#imageAndStatus
+    background-image: url("/dashboard/content/investment-willson-apartment.png")
+    background-size: cover
+    background-position: center
+    flex-grow: 1
+    padding: $sections-padding
+    display: flex
+    align-items: flex-end
+
+.imageDiv
+    padding: $button-padding
+    border-radius: 0.7rem
+    background-color: $main-color
+    color: white
+    width: 70px
+    margin: 0 0.2rem
+    &:last-child
+        background-color: $light-green
+    align-content: center
+
+#investmentInformation
+    display: flex
+    flex-direction: column
+    padding: $sections-padding
+    div
+        display: flex
+        justify-content: space-between
+        margin-bottom: 0.5rem
+    img
+        margin-right: 0.3rem
+    p
+        margin-right: 0.5rem
+
+#viewContainer
+    display: flex
+    justify-content: space-between
+    padding: $sections-padding
+    background-color: #000000
+    color: white
