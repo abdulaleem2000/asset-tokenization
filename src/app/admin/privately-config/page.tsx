@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import Menu from "@/components/menu_admin.component";
 import styles from "@/styles/pages/profile/components/personal-informaion.module.sass";
@@ -30,10 +31,11 @@ export default function PrivatelyConfig() {
         <ContentHeader />
         <h1>Privately Configration</h1>
         <article>
-            
           <article>
-            <form id={styles.personalInformationForm} name="privatelyConfigForm">
-            
+            <form
+              id={styles.personalInformationForm}
+              name="privatelyConfigForm"
+            >
               <section>
                 <div className={styles.formDivision}>
                   <label>Smart Contract Whitelist</label>
@@ -45,7 +47,7 @@ export default function PrivatelyConfig() {
                     required
                   />
                 </div>
-                
+
                 <div className={styles.formDivision}>
                   <label>Owners Address</label>
                   <input
@@ -56,9 +58,8 @@ export default function PrivatelyConfig() {
                     required
                   />
                 </div>
-                
+
                 <div className={styles.formDivision}>
-                    
                   <label>Owner's Delvatakey</label>
                   <input
                     form="privatelyConfigForm"
@@ -68,16 +69,13 @@ export default function PrivatelyConfig() {
                     required
                   />
                 </div>
-               
-               
-
-
-
-              
               </section>
-             
-              
-              <button form="privatelyConfigForm" type="submit" className={styles.buttonForm}>
+
+              <button
+                form="privatelyConfigForm"
+                type="submit"
+                className={styles.buttonForm}
+              >
                 Submit Now
               </button>
             </form>
