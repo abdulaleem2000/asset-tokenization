@@ -1,5 +1,8 @@
 @import "@/styles/variables.module"
 
+
+  
+   
 #dashboardView
     display: grid
     grid-template-columns: 0.2fr 1fr 0.3fr
@@ -222,3 +225,59 @@
     padding: 0.8rem !important
     border: 1px solid $grayed-text
     border-radius: $containers-radius !important
+
+.stickyChatbotButton
+    position: fixed
+    bottom: 20px /* Adjust the distance from the bottom as needed */
+    right: 20px /* Adjust the distance from the right as needed */
+    background-color: $main-color /* Your desired background color */
+    color: #171616 /* Your desired text color */
+    padding: 10px
+    border-radius:  1rem
+    cursor: pointer
+    font-size: larger
+
+.iconDesign
+    color: #fff
+   
+    align-items: center
+
+
+//qna
+$primary-color: #3498db
+$secondary-color: #2ecc71
+$background-color: #f0f0f0
+$font-color: #333
+
+.qa-container 
+  max-width: 600px
+  margin: 50px auto
+  padding: 20px
+  background-color: $background-color
+  border-radius: 10px
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+
+
+.qa-list 
+  list-style: none
+  padding: 0
+  margin: 0
+
+
+.li 
+  margin-bottom: 20px
+  cursor: pointer // Add cursor pointer for better user experience
+
+
+.question 
+  font-weight: bold
+  color: $primary-color
+
+
+.answerHidden 
+  color: $font-color
+  display: none // Hide answers by default
+
+.answerShown
+    color: $font-color
+    display: block

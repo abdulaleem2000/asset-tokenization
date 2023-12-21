@@ -108,7 +108,7 @@ const ViewInvestment = () => {
 
               <div className={styles.userDetailsText}>
                 <h4>Minimum Investment: </h4>
-                <p>{searchParams.get("minInvestment")} matic</p>
+                <p>{Number(searchParams.get("minInvestment"))/ 1000000000000000000} matic</p>
               </div>
 
               <div className={styles.userDetailsText}>

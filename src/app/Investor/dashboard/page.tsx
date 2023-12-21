@@ -289,6 +289,18 @@ export default function Dashboard({ user }: any) {
         </article>
       </section>
       <ChatPreview />
+      <Link href="/Investor/qna">
+        <div className={styles.stickyChatbotButton}>
+          Frequently Asked Questions
+          <Image
+            src="/messages/icons/message-square.svg"
+            alt="Ethereum Icon"
+            width="18"
+            height="18"
+            className={styles.iconDesign}
+          />
+        </div>
+      </Link>
     </main>
   );
 }
