@@ -14,6 +14,7 @@ const { useGlobalState } = createGlobalState<GlobalState>({
     id: "",
     username: "",
     email: "",
+    role: "",
   },
   isLogged: false,
   signer: "",
