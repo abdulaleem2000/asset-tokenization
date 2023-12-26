@@ -46,16 +46,18 @@ export default function Menu({ userData }: any) {
           </Link>
         </article>
         <article className={styles.menuOption}>
-          <Image
-            src="/dashboard/menu/icons/wallet-icon-black.svg"
-            alt="Wallet Icon"
-            width="24"
-            height="24"
-          />
-          <p>Wallet</p>
+          <Link href="/Investor/wallet">
+            <Image
+              src="/dashboard/menu/icons/wallet-icon-black.svg"
+              alt="Wallet Icon"
+              width="24"
+              height="24"
+            />
+            <p>Wallet</p>
+          </Link>
         </article>
         <article className={styles.menuOption}>
-          <Link href="/training">
+          <Link href="">
             <Image
               src="/dashboard/menu/icons/bookmark-icon-black.svg"
               alt="Bookmark Icon"
@@ -65,7 +67,7 @@ export default function Menu({ userData }: any) {
             <p>Training</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        {/* <article className={styles.menuOption}>
           <Link href="/messages">
             <Image
               src="/dashboard/menu/icons/chat-icon-black.svg"
@@ -75,7 +77,7 @@ export default function Menu({ userData }: any) {
             />
             <p>Messages</p>
           </Link>
-        </article>
+        </article> */}
         <article className={styles.menuOption}>
           <Link href="/Investor/investments-made">
             <Image
@@ -90,16 +92,22 @@ export default function Menu({ userData }: any) {
       </article>
       <article className={styles.menuArticle}>
         <h4>CATEGORIES</h4>
-        <article className={`${styles.menuOption} ${styles.categoryOption}`}>
+        <article className={`${styles.menuOption} `}>
           <Link href="/Investor/investments">
+            <Image
+              src="/dashboard/menu/icons/building-4.svg"
+              alt="Dollar Icon"
+              width="24"
+              height="24"
+            />
             <p>
-              <input type="checkbox" className={styles.categoryBox} />{" "}
+              {/* <input type="checkbox" className={styles.categoryBox} />{" "} */}
               Properties
             </p>
           </Link>
-          <p>40</p>
+          {/* <p>40</p> */}
         </article>
-        <article className={`${styles.menuOption} ${styles.categoryOption}`}>
+        {/* <article className={`${styles.menuOption} ${styles.categoryOption}`}>
           <p>
             <input type="checkbox" className={styles.categoryBox} /> Venture
             Capital
@@ -111,9 +119,9 @@ export default function Menu({ userData }: any) {
             <input type="checkbox" className={styles.categoryBox} /> Auctions
           </p>
           <p>20</p>
-        </article>
+        </article> */}
 
-        <div id={styles.categoriesShowMore}>
+        {/* <div id={styles.categoriesShowMore}>
           <Image
             src="/dashboard/menu/icons/arrow-down-icon-gray.svg"
             alt="Arrow Down Icon"
@@ -121,7 +129,7 @@ export default function Menu({ userData }: any) {
             width="14"
           />
           <p>Show More</p>
-        </div>
+      </div> */}
       </article>
       <article className={styles.menuArticle}>
         <h4>GENERAL</h4>

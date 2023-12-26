@@ -3,13 +3,13 @@ import Link from "next/link";
 import styles from "@/styles/components/content-header.module.sass";
 import SearchBar from "./search-bar.component";
 
-export default function ContentHeader() {
+export default function ContentHeader({ userData }: any) {
   return (
     <main>
       <article id={styles.contentHeader}>
         <div className={styles.contentHeaderPart}>
           <div>
-            <h2>Good Morning, Jane</h2>
+            <h2>Good Morning</h2>
           </div>
           <div className={styles.contentHeaderPart}>
             <SearchBar category={"TOP-BAR"} />
