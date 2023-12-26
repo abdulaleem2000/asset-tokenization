@@ -37,9 +37,11 @@ export default function Login() {
 
       if (response.statusText !== "OK") throw new Error(response.data.message);
 
-      const userData = await response.data.userData;
-      console.log(response.data.tokenData.role);
-      toast.success(response.data.message);
+      const userData = await response.data;
+      //console.log(response.data.tokenData.role);
+      console.log(userData.tokenData.role);
+      //toast.success(response.data.message);
+      toast.success(userData.message);
 
       setUserData(userData);
       setIsLogged(true);
