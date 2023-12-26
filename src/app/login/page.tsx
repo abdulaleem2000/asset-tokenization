@@ -9,8 +9,15 @@ import { useGlobalState } from "@/utils/constants";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
-
-export default function Login() {
+import { JwtPayload, jwtDecode } from "jwt-decode";
+import { NextRequest } from "next/server";
+interface CustomJwtPayload extends JwtPayload {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+}
+export default function Login(request: NextRequest) {
   const router = useRouter();
 
   const [, setIsLogged] = useGlobalState("isLogged");
@@ -40,10 +47,11 @@ export default function Login() {
       const userData = await response.data.userData;
       console.log(response.data.tokenData.role);
       toast.success(response.data.message);
-
+      const token = request.cookies.get("token")?.value || "";
+      const decoded: CustomJwtPayload = jwtDecode(token);
       setUserData(userData);
       setIsLogged(true);
-      if (response.data.tokenData.role == "Admin") {
+      if (decoded.role === "Admin") {
         router.push("/admin/dashboard");
       } else {
         router.push("/Investor/dashboard");
