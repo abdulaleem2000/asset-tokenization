@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function Menu({ userData }: any) {
   const router = useRouter();
-  console.log(userData.is_admin);
+  // console.log(userData.is_admin);
   async function logout() {
     try {
       await axios.get("/api/user/logout");

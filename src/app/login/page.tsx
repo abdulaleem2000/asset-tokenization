@@ -35,7 +35,7 @@ export default function Login() {
 
       const response = await axios.post("/api/user/login", data);
 
-      if (response.statusText !== "OK") throw new Error(response.data.message);
+      if (response.status !== 200) throw new Error(response.data.message);
 
       const userData = await response.data;
       //console.log(response.data.tokenData.role);
@@ -52,7 +52,7 @@ export default function Login() {
       }
     } catch (err: any) {
       console.log(err);
-      toast.error("error");
+      toast.error(err);
     }
   }
 
