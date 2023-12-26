@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     const validPassword = await bcryptjs.compare(password, user.password);
     if (!validPassword)
-      return NextResponse.json({ succes: false }, { status: 409 });
+      return NextResponse.json({ success: false }, { status: 409 });
 
     const tokenData: TokenData = {
       id: user._id,
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
       expiresIn: "1d",
     });
-    
+
     cookies().set("token", token, {
       httpOnly: true,
     });

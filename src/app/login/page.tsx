@@ -43,16 +43,14 @@ export default function Login() {
 
       setUserData(userData);
       setIsLogged(true);
-      if(response.data.tokenData.role === 'Admin'){
+      if (response.data.tokenData.role == "Admin") {
         router.push("/admin/dashboard");
       } else {
         router.push("/Investor/dashboard");
       }
-    
-     
     } catch (err: any) {
-      console.log(err.response.data);
-      toast.error(err.response.data.message);
+      console.log(err);
+      toast.error(err);
     }
   }
 
