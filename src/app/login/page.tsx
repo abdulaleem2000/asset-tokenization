@@ -51,7 +51,7 @@ export default function Login() {
         router.push("/Investor/dashboard");
       }
     } catch (err: any) {
-      console.log("error");
+      console.log(err);
       toast.error("error");
     }
   }
