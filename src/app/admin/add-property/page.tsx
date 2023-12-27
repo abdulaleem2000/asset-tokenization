@@ -526,6 +526,9 @@ export default function AddProperty() {
                     toast.success("Asset Tokenized Successfully");
                     router.push("/admin/properties-management");
                   }}
+                  onError={(err: any) => {
+                    console.log(err);
+                  }}
                 >
                   Send Transaction
                 </Web3Button>
