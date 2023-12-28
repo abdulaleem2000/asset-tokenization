@@ -14,7 +14,9 @@ import {
   ReactPortal,
 } from "react";
 export default function PaymentContent() {
-  const contractAddress = "0x5Ff135846589d6B492c1928541d0F0bD7FE68f27";
+  //const contractAddress = "0x5Ff135846589d6B492c1928541d0F0bD7FE68f27";
+  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+
   const { contract } = useContract(contractAddress);
   const { data, isLoading, error } = useContractRead(
     contract,

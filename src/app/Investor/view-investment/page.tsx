@@ -17,7 +17,9 @@ const ViewInvestment = () => {
   const data1 = searchParams.get("numberOfTokens");
   console.log("data", data1);
   const [userData, setUserData] = useState("userData");
-  const contractAddress = "0x0d49Fcb0812bB41407ecD528f83Fa5C688E546f9";
+  //const contractAddress = "0x0d49Fcb0812bB41407ecD528f83Fa5C688E546f9";
+  const contractAddress = "0xc1C3716981f18A488f2cb96fdac7AA408F9fFdf7";
+
   const { contract } = useContract(contractAddress);
   const { mutateAsync, isLoading, error } = useContractWrite(
     contract,
@@ -108,7 +110,11 @@ const ViewInvestment = () => {
 
               <div className={styles.userDetailsText}>
                 <h4>Minimum Investment: </h4>
-                <p>{Number(searchParams.get("minInvestment"))/ 1000000000000000000} matic</p>
+                <p>
+                  {Number(searchParams.get("minInvestment")) /
+                    1000000000000000000}{" "}
+                  matic
+                </p>
               </div>
 
               <div className={styles.userDetailsText}>
