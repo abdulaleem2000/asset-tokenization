@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 "use client";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,9 +11,11 @@ import axios from "axios";
 import { useState } from "react";
 import UserPreview from "@/components/user-preview.component";
 import { ConnectWallet, lightTheme } from "@thirdweb-dev/react";
+import UsersDash from "./components/usersDashboard.component";
 
 export default function Dashboard({ user }: any) {
   const [userData, setUserData] = useState("userData");
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -21,9 +24,21 @@ export default function Dashboard({ user }: any) {
       return response.data;
     }
 
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("/api/user/recent-user");
+        const data = await response.data;
+        setUsers(data.users);
+      } catch (error) {
+        console.log("Error fetching users:", error);
+      }
+    };
+
     getData().then((dataResponse) => {
       setUserData(dataResponse.user);
     });
+
+    fetchUsers();
   }, []);
 
   return (
@@ -31,7 +46,14 @@ export default function Dashboard({ user }: any) {
       <Menu userData={userData} />
 
       <section id={styles.contentSection}>
-        <ContentHeader />
+        <article id={styles.contentHeader}>
+          <div className={styles.contentHeaderPart}>
+            <div>
+              <h2>Good Morning</h2>
+            </div>
+          </div>
+        </article>
+        {/* <ContentHeader /> */}
 
         <article id={styles.contentBody}>
           <section id={styles.topContentBody}>
@@ -86,19 +108,26 @@ export default function Dashboard({ user }: any) {
                 //showing users for admin
               }
               <div id={styles.trainingContainer}>
-                <div id={styles.trainingTop}>
-                  <div>
-                    <h3>Users</h3>
-                    <p>View Recent Users</p>
+                <Link href="/admin/verification">
+                  <div id={styles.trainingTop}>
+                    <div>
+                      <h3>Users</h3>
+                      <p>View Recent Users</p>
+                    </div>
+                    <Image
+                      src="/dashboard/content/icons/arrow-right-main.svg"
+                      alt="Arrow Pointing to Right"
+                      height="15"
+                      width="12"
+                    />
                   </div>
-                  <Image
-                    src="/dashboard/content/icons/arrow-right-main.svg"
-                    alt="Arrow Pointing to Right"
-                    height="15"
-                    width="12"
-                  />
-                </div>
+                </Link>
+              </div>
+              {users.map((user) => (
+                <UsersDash data={user} />
+              ))}
 
+              {/* 
                 <div id={styles.trainingLessons}>
                   <div className={styles.lessonTaken}>
                     <div className={styles.lessonInfo}>
@@ -152,7 +181,7 @@ export default function Dashboard({ user }: any) {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </article>
             <article className={styles.topContentPiece}>
               <article id={styles.investmentsContainer}>

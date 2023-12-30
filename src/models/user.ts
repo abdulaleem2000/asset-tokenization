@@ -50,6 +50,7 @@ const UserSchema = new Schema({
   // CHATS //
   conversation_ids: [Schema.Types.ObjectId],
   seen_message_ids: [Schema.Types.ObjectId],
+  dateCreated: { type: Date, default: Date.now },
 });
 
 UserSchema.pre("save", function (next) {

@@ -1,18 +1,19 @@
 import styles from "@/styles/pages/investments/components/investment.module.sass";
 import Image from "next/image";
 
-export default function Users() {
+export default function Users(props: any) {
   return (
     <main id={styles.investment}>
       <div
-        id={styles.imageAndStatusUser} /*style={{ backgroundImage: `url(${})` }}*/
+        id={
+          styles.imageAndStatusUser
+        } /*style={{ backgroundImage: `url(${})` }}*/
       >
-       <div className={styles.imageDiv}>$186,000</div>
-        
+        <div className={styles.imageDiv}>$186,000</div>
       </div>
       <div id={styles.investmentInformation}>
         <div>
-          <h3>Esther Howard</h3>
+          <h3>{props.data.username}</h3>
         </div>
         <div>
           <div>
@@ -22,15 +23,24 @@ export default function Users() {
               height="16"
               width="16"
             />
-            <p>esther@gmail.com</p>
+            <p>{props.data.email}</p>
           </div>
         </div>
         <div>
           <div>
             <p>Member Since:</p>
-            <p><b>1-02-2023</b></p>
+            <p>
+              <b>{props.data.dateCreated}</b>
+            </p>
           </div>
-          
+        </div>
+        <div>
+          <div>
+            <p>Role:</p>
+            <p>
+              <b>{props.data.rol}</b>
+            </p>
+          </div>
         </div>
       </div>
       <div id={styles.viewContainer}>

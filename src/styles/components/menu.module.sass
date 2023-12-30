@@ -34,6 +34,7 @@
         color: white
     &:active
         transform: none
+        
     img
         margin-right: $menu-opt-margin-right
     a
@@ -41,6 +42,18 @@
         display: flex
         align-items: center
 
+.menuOptionActive
+    display: flex
+    align-content: center
+    border-radius: $main-radius
+    padding: $button-padding
+    background-color: $main-color
+    img
+        margin-right: $menu-opt-margin-right
+    a
+        background: none
+        display: flex
+        align-items: center
 .categoryOption
     justify-content: space-between
     &:hover

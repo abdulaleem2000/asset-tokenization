@@ -4,11 +4,11 @@ import Image from "next/image";
 import styles from "@/styles/components/menu.module.sass";
 import { MenuProps } from "@/types/props/menu-props.interface";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Menu({ userData }: any) {
   const router = useRouter();
-  // console.log(userData.is_admin);
+  console.log(usePathname());
   async function logout() {
     try {
       await axios.get("/api/user/logout");
@@ -34,7 +34,13 @@ export default function Menu({ userData }: any) {
 
       <article className={styles.menuArticle}>
         <h4>MENU</h4>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/dashboard"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/dashboard">
             <Image
               src="/dashboard/menu/icons/homepage-icon-white.svg"
@@ -45,7 +51,13 @@ export default function Menu({ userData }: any) {
             <p>Homepage</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/properties"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/properties">
             <Image
               src="/dashboard/menu/icons/building-4.svg"
@@ -56,7 +68,13 @@ export default function Menu({ userData }: any) {
             <p>Properties</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/properties-management"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/properties-management">
             <Image
               src="/dashboard/menu/icons/building-4.svg"
@@ -67,7 +85,13 @@ export default function Menu({ userData }: any) {
             <p>Properties Management</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/users"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/users">
             <Image
               src="/dashboard/menu/icons/user-icon-black.svg"
@@ -78,7 +102,13 @@ export default function Menu({ userData }: any) {
             <p>Users</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/verification"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/verification">
             <Image
               src="/dashboard/menu/icons/tick-circle.svg"
@@ -89,7 +119,13 @@ export default function Menu({ userData }: any) {
             <p>Verification</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/privately-config"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/privately-config">
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
@@ -100,7 +136,13 @@ export default function Menu({ userData }: any) {
             <p>Privately Configuration</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/payment-history"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/payment-history">
             <Image
               src="/dashboard/menu/icons/wallet-icon-black.svg"
@@ -111,7 +153,13 @@ export default function Menu({ userData }: any) {
             <p>Payment History</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/shipping-history"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/shipping-history">
             <Image
               src="/dashboard/menu/icons/shipping-box-02.svg"
@@ -122,7 +170,13 @@ export default function Menu({ userData }: any) {
             <p>Shipping History</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/profit-history"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/profit-history">
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
@@ -133,7 +187,13 @@ export default function Menu({ userData }: any) {
             <p>Profit History</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/admin/create-token"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/admin/create-token">
             <Image
               src="/dashboard/menu/icons/plus-icon.svg"
@@ -157,7 +217,13 @@ export default function Menu({ userData }: any) {
           />
           <p>Settings</p>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/profile"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/profile">
             <Image
               src="/dashboard/menu/icons/user-icon-black.svg"

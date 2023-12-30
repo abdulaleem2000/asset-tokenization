@@ -2,6 +2,7 @@
 import axios, { AxiosError } from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Menu from "@/components/menu_admin.component";
 import {
   ThirdwebProvider,
   ConnectWallet,
