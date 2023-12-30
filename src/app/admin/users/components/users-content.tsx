@@ -32,9 +32,9 @@ export default function UsersContent() {
         <div>
           <h2>Users</h2>
         </div>
-        <button>Discharge</button>
+        {/* <button>Discharge</button> */}
 
-        <SearchBar category={""} />
+        {/* <SearchBar category={""} /> */}
       </article>
       <article id={styles.investmentsContainer}>
         {users.map((user) => (

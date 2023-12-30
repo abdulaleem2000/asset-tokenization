@@ -33,9 +33,9 @@ export default function VerificationContent() {
           <h1>Verification</h1>
           <p>Verification Details</p>
         </div>
-        <Link href="/admin/add-property">
+        {/* <Link href="/admin/add-property">
           <button style={{ display: "hidden" }}>Add Property</button>
-        </Link>
+        </Link> */}
       </article>
       <article id={styles.investmentsContainer}>
         {users.map((user) => (
