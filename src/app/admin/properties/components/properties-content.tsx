@@ -28,35 +28,41 @@ export default function PropertiesContent() {
   }
 
   return (
-    <main id={styles.investmentsContent}>
-      <ContentHeader />
-      <article>
-        <div>
-          <h2>Properties</h2>
-        </div>
-      </article>
-      <article id={styles.investmentsContainer}>
-        {data[0]?.map(
-          (data: {
-            [x: string]: ReactNode;
-            name:
-              | string
-              | number
-              | boolean
-              | ReactElement<any, string | JSXElementConstructor<any>>
-              | Iterable<ReactNode>
-              | ReactPortal
-              | PromiseLikeOfReactNode
-              | null
-              | undefined;
-          }) => {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <Property data={data} data2={data[1]}></Property>
-            );
-          }
-        )}
-      </article>
-    </main>
+    <div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <main id={styles.investmentsContent}>
+          <ContentHeader />
+          <article>
+            <div>
+              <h2>Properties</h2>
+            </div>
+          </article>
+          <article id={styles.investmentsContainer}>
+            {data[0].map(
+              (data: {
+                [x: string]: ReactNode;
+                name:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | Iterable<ReactNode>
+                  | ReactPortal
+                  | PromiseLikeOfReactNode
+                  | null
+                  | undefined;
+              }) => {
+                return (
+                  // eslint-disable-next-line react/jsx-key
+                  <Property data={data} data2={data[1]}></Property>
+                );
+              }
+            )}
+          </article>
+        </main>
+      )}
+    </div>
   );
 }
