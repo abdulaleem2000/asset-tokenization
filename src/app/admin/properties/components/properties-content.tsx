@@ -52,7 +52,7 @@ export default function PropertiesContent() {
           }) => {
             return (
               // eslint-disable-next-line react/jsx-key
-              <Property data={data}></Property>
+              <Property data={data} data2={data[1]}></Property>
             );
           }
         )}
