@@ -60,7 +60,7 @@ export default function InvestmentsContent() {
                   | undefined;
               }) => (
                 // eslint-disable-next-line react/jsx-key
-                <Property data={data}></Property>
+                <Property data={data} data2={data[1]}></Property>
               )
             )}
           </article>

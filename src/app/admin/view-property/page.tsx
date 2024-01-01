@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
 import styles from "@/styles/kyc.module.sass";
 import SingupLayout from "@/layouts/singup-layout";
-import Menu from "@/components/menu.component";
+import Menu from "@/components/menu_admin.component";
 import axios from "axios";
 import Image from "next/image";
 import ContentHeader from "@/components/content-header_admin";
@@ -131,7 +131,7 @@ const ViewInvestment = () => {
                 <p>{searchParams.get("homeInterest")} year</p>
               </div>
             </div>
-            <h1>Buy Tokens:</h1>
+            {/* <h1>Buy Tokens:</h1>
             <form onSubmit={handleSubmit} name="valueForm">
               <label>
                 Amount:
@@ -157,7 +157,7 @@ const ViewInvestment = () => {
               }}
             >
               Send Transaction
-            </Web3Button>
+            </Web3Button> */}
           </div>
         </article>
       </section>
