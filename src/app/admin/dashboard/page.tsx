@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/dashboard.module.sass";
 import SingupLayout from "@/layouts/singup-layout";
-import { ReactNode, useEffect } from "react";
 import Menu from "@/components/menu_admin.component";
 import ContentHeader from "@/components/content-header_admin";
 import axios from "axios";
@@ -12,8 +11,27 @@ import { useState } from "react";
 import UserPreview from "@/components/user-preview.component";
 import { ConnectWallet, lightTheme } from "@thirdweb-dev/react";
 import UsersDash from "./components/usersDashboard.component";
+import InvestDash from "./components/investmentsDashBoard.component";
+import { useContractRead, useContract, useAddress } from "@thirdweb-dev/react";
+import {
+  JSXElementConstructor,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useEffect,
+} from "react";
 
 export default function Dashboard({ user }: any) {
+  //fetching investments from smart contract
+  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+
+  const { contract } = useContract(contractAddress);
+  const { data, isLoading, error } = useContractRead(
+    contract,
+    "getInvestments"
+  );
+
   const [userData, setUserData] = useState("userData");
   const [users, setUsers] = useState([]);
 
@@ -126,62 +144,6 @@ export default function Dashboard({ user }: any) {
               {users.map((user) => (
                 <UsersDash data={user} />
               ))}
-
-              {/* 
-                <div id={styles.trainingLessons}>
-                  <div className={styles.lessonTaken}>
-                    <div className={styles.lessonInfo}>
-                      <Image
-                        src="/dashboard/content/lesson-image-generic.jpg"
-                        alt="Lesson Image"
-                        width="50"
-                        height="50"
-                      />
-                      <div>
-                        <h4>Jack</h4>
-                        <p>jack@gmail.com</p>
-                      </div>
-                    </div>
-                    <div className={styles.lessonCompleted}>
-                      <p>Completed</p>
-                    </div>
-                  </div>
-                  <div className={styles.lessonTaken}>
-                    <div className={styles.lessonInfo}>
-                      <Image
-                        src="/dashboard/content/lesson-image-generic.jpg"
-                        alt="Lesson Image"
-                        width="50"
-                        height="50"
-                      />
-                      <div>
-                        <h4>Esther</h4>
-                        <p>esther@gmail.com</p>
-                      </div>
-                    </div>
-                    <div className={styles.lessonProgressing}>
-                      <p>Progressing</p>
-                    </div>
-                  </div>
-                  <div className={styles.lessonTaken}>
-                    <div className={styles.lessonInfo}>
-                      <Image
-                        src="/dashboard/content/lesson-image-generic.jpg"
-                        alt="Lesson Image"
-                        width="50"
-                        height="50"
-                      />
-                      <div>
-                        <h4>Alina</h4>
-                        <p>alina124@gmail.com</p>
-                      </div>
-                    </div>
-                    <div className={styles.lessonProgressing}>
-                      <p>Progressing</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </article>
             <article className={styles.topContentPiece}>
               <article id={styles.investmentsContainer}>
@@ -200,88 +162,30 @@ export default function Dashboard({ user }: any) {
                     />
                   </div>
                 </div>
-                <div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id={styles.investmentsButtons}>
+                {data?.map(
+                  (dataMap: {
+                    [x: string]: ReactNode;
+                    name:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | Iterable<ReactNode>
+                      | ReactPortal
+                      | PromiseLikeOfReactNode
+                      | null
+                      | undefined;
+                  }) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <InvestDash data={dataMap} />
+                  )
+                )}
+
+                {/* <div id={styles.investmentsButtons}>
                   <button>1</button>
                   <button>2</button>
                   <button>3</button>
-                </div>
+                </div> */}
               </article>
             </article>
           </section>

@@ -1,18 +1,18 @@
 import styles from "@/styles/pages/investments/components/investment.module.sass";
 import Image from "next/image";
 
-export default function Investment() {
+export default function Investment(props: any) {
   return (
     <main id={styles.investment}>
       <div
         id={styles.imageAndStatus} /*style={{ backgroundImage: `url(${})` }}*/
       >
-       <div className={styles.imageDiv}>$186,000</div>
-        
+        <div className={styles.imageDiv}>11/06/2023</div>
+        <div className={styles.imageDiv}>Available</div>
       </div>
       <div id={styles.investmentInformation}>
         <div>
-          <h3>Property Name</h3>
+          <h3>{props.data.name}</h3>
         </div>
         <div>
           <div>
@@ -22,17 +22,17 @@ export default function Investment() {
               height="16"
               width="16"
             />
-            <p>Location</p>
+            <p>{props.data.direction}</p>
           </div>
         </div>
         <div>
           <div>
-            <p>Probability:</p>
-            <p>3%</p>
+            <p>Price</p>
+            <p>{props.data.tokenPrice.toString()}</p>
           </div>
           <div>
             <p>Token:</p>
-            <p>$0.2</p>
+            <p>{props.data.numberOfTokens.toString()}</p>
           </div>
         </div>
       </div>
