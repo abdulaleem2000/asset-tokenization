@@ -23,13 +23,79 @@ export default function Profile() {
       setUserData(dataResponse.user);
     });
   }, []);
+  console.log(userData);
 
   return (
     <main id={styles.profileView}>
       <Menu userData={userData} />
       <section id={styles.profileSection}>
         <ContentHeader />
-        <h1>Profile Details</h1>
+
+        {/* <div className={styles.profileContainer}> */}
+        {/* <div className="profile-picture">
+  <img src="profile.jpg" alt="Profile Picture">
+</div> */}
+        <div className={styles.profileContainer}>
+          <Link href="/profile/personal-information">
+            <div id={styles.personalInformationContainer}>
+              <h4>Edit Personal Information</h4>
+              <Image
+                src="/profile/icons/alert-icon-main.svg"
+                alt="Alert Icon"
+                width="24"
+                height="24"
+              />
+            </div>
+          </Link>
+          <br></br>
+          <div className={styles.profileSection}>
+            <h2>Personal Information</h2>
+            <br />
+            <p>
+              <strong>Name:</strong> a;li
+            </p>
+            <p>
+              <strong>Surname:</strong> Doe
+            </p>
+            <p>
+              <strong>Nationality:</strong> Some Nationality
+            </p>
+          </div>
+
+          <div className={styles.profileSection}>
+            <h2>Contact Information</h2>
+            <br />
+            <p>
+              <strong>Phone Number:</strong> +123456789
+            </p>
+            <p>
+              <strong>ID:</strong> ABC123
+            </p>
+          </div>
+
+          <div className={styles.profileSection}>
+            <h2>Address Information</h2>
+            <br />
+            <p>
+              <strong>Address:</strong> 123 Main St, Cityville
+            </p>
+            <p>
+              <strong>City:</strong> Cityville
+            </p>
+          </div>
+
+          <div className={styles.profileSection}>
+            <h2>Company Information</h2>
+            <br />
+            <p>
+              <strong>Representing Company:</strong> XYZ Corporation
+            </p>
+            <p>
+              <strong>Company Name:</strong> XYZ Corp
+            </p>
+          </div>
+        </div>
+        {/* <h1>Profile Details</h1>
         <article id={styles.userSummary}>
           <Image
             src="/dashboard/menu/icons/user-icon-black.svg"
@@ -64,7 +130,7 @@ export default function Profile() {
             <label>Language</label>
             <input name="userLanguage" type=""></input>
           </form>
-        </article>
+        </article> */}
       </section>
     </main>
   );

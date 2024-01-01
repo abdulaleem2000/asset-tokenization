@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         password,
         email,
         rol: "Client",
-        createdDate: dateCreatedAsDate,
+        dateCreated: dateCreatedAsDate,
       });
 
       const savedUser = await newUser.save();

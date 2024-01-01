@@ -53,3 +53,77 @@ $menu-opt-margin-right: 1rem
 
 #userInfoForm
     width: 30%
+
+
+
+
+// Variables
+$primary-color: #3498db
+$secondary-color: #2ecc71
+$font-family: 'Arial', sans-serif
+
+// Styles
+.bodyPro
+    background-color: #ecf0f1
+    font-family: $font-family
+
+
+.profileContainer 
+    max-width: 800px
+    margin: 50px auto
+    padding: 20px
+    background-color: #fff
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+    border-radius: 10px
+
+
+.profilePicture 
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    margin: 0 auto
+    overflow: hidden
+    img 
+        width: 100%
+        height: 100%
+        object-fit: cover
+  
+
+
+.profileInfo 
+    text-align: center
+    margin-top: 20px
+    h1 
+        color: $primary-color
+  
+    p 
+        color: #555
+  
+
+
+.socialLinks 
+    margin-top: 20px
+    a 
+        display: inline-block
+        margin: 0 10px
+        color: $secondary-color
+        transition: color 0.3s ease
+        &:hover 
+            color: darken($secondary-color, 10%)
+    
+  
+.profileSection 
+  margin-bottom: 20px
+
+  h2 
+    color: $primary-color
+  
+
+  p 
+    color: #555
+    margin-bottom: 10px
+  
+
+  strong 
+    color: $primary-color
+  

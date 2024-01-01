@@ -21,7 +21,7 @@ export default function ContentHeader({ userData }: any) {
             />
           </div>
         </div>
-        <div id={styles.completeUserAlert}>
+        {/* <div id={styles.completeUserAlert}>
           <Image
             src="/dashboard/content/icons/alert-bell-main.png"
             alt="Alert Bell"
@@ -40,7 +40,7 @@ export default function ContentHeader({ userData }: any) {
               />
             </Link>
           </p>
-        </div>
+        </div> */}
       </article>
     </main>
   );
