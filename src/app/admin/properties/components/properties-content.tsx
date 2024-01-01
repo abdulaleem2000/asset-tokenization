@@ -36,7 +36,7 @@ export default function PropertiesContent() {
         </div>
       </article>
       <article id={styles.investmentsContainer}>
-        {data[0].map(
+        {data[0]?.map(
           (data: {
             [x: string]: ReactNode;
             name:
