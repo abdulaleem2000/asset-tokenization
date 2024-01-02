@@ -17,9 +17,15 @@ const UsersDashboard = (props: any) => {
             <p>{props.data.email}</p>
           </div>
         </div>
-        <div className={styles.lessonCompleted}>
-          <p>Completed</p>
-        </div>
+        {props.data.kyc ? (
+          <div className={styles.lessonCompleted}>
+            <p>Completed</p>
+          </div>
+        ) : (
+          <div className={styles.lessonProgressing}>
+            <p>Progressing</p>
+          </div>
+        )}
       </div>
     </div>
   );

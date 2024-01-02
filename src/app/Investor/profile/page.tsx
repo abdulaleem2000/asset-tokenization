@@ -36,7 +36,7 @@ export default function Profile() {
   <img src="profile.jpg" alt="Profile Picture">
 </div> */}
         <div className={styles.profileContainer}>
-          <Link href="/profile/personal-information">
+          <Link href="/Investor/profile/personal-information">
             <div id={styles.personalInformationContainer}>
               <h4>Edit Personal Information</h4>
               <Image

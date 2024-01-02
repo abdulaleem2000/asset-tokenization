@@ -9,10 +9,33 @@ import ContentHeader from "@/components/content-header_admin";
 import axios from "axios";
 import { useState } from "react";
 import UserPreview from "@/components/user-preview.component";
+import { useSearchParams } from "next/navigation";
+import { log } from "console";
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+interface userData {
+  _id?: string;
+  email?: string;
+  name?: string;
+  surname?: string;
+  country?: string;
+  id?: string;
+  nationality?: string;
+  id_passport?: string;
+  address?: string;
+}
 
 export default function VerificationKyc({ user }: any) {
-  const [userData, setUserData] = useState("userData");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  console.log(searchParams.get("_id"));
 
+  const data = { id: searchParams.get("_id") };
+  const [userData, setUserData] = useState("userData");
+  const [userVerData, setVerUserData] = useState<userData>({});
+  const [docImage, setDocImage] = useState("");
+  //getting data from api
   useEffect(() => {
     async function getData() {
       const response = await axios.get("/api/data/dashboard");
@@ -20,15 +43,43 @@ export default function VerificationKyc({ user }: any) {
       return response.data;
     }
 
+    const fetchUser = async () => {
+      const response = await axios.post("/api/user/get-user-by-id", data);
+      return response.data;
+    };
     getData().then((dataResponse) => {
       setUserData(dataResponse.user);
     });
-  }, []);
 
+    fetchUser().then((dataRes) => {
+      setVerUserData(dataRes.user);
+    });
+  }, []);
+  //setting image
+  useEffect(() => {
+    if (typeof userVerData.id_passport === "string") {
+      setDocImage(userVerData.id_passport);
+    }
+  }, [userVerData.id_passport]);
+
+  const handleApproveClick = async () => {
+    try {
+      const response = await axios.post("/api/user/approve", data);
+      if (response.status !== 200) {
+        throw new Error("HTTP error! status: " + response.status);
+      }
+      toast.success(response.data.message);
+      router.push("/admin/verification");
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log("click");
+  };
   return (
     <main id={styles.dashboardView}>
       <Menu userData={userData} />
-
+      <Toaster />
       <section id={styles.contentSection}>
         <div className={styles.contentHeaderS}>
           <ContentHeader />
@@ -46,7 +97,11 @@ export default function VerificationKyc({ user }: any) {
               />
 
               <div className={styles.namePlate}>
-                <h1 className={styles.text}>Esther Howard</h1>
+                <h1 className={styles.text}>
+                  {userVerData.name}
+                  <span> </span>
+                  {userVerData.surname}
+                </h1>
 
                 <p>
                   <Image
@@ -56,7 +111,7 @@ export default function VerificationKyc({ user }: any) {
                     height="10"
                     width="10"
                   />
-                  esther@gmail.com
+                  {userVerData.email}
                 </p>
               </div>
             </div>
@@ -64,20 +119,20 @@ export default function VerificationKyc({ user }: any) {
             <div className={styles.userDetailsMainBody}>
               <div className={styles.userDetailsText}>
                 <h4>Address: </h4>
-                <p>wah g wah house gulber town, hasilpur</p>
+                <p>{userVerData.address}</p>
               </div>
 
               <div className={styles.userDetailsText}>
                 <h4>Country: </h4>
-                <p>9870.9 / 10000</p>
+                <p>{userVerData.country}</p>
               </div>
 
               <div className={styles.userDetailsText}>
-                <h4>DNI: </h4>
-                <p>376487</p>
+                <h4>ID Number: </h4>
+                <p>{userVerData.id}</p>
               </div>
 
-              <div className={styles.userDetailsText}>
+              {/* <div className={styles.userDetailsText}>
                 <h4>Validation Date: </h4>
                 <p>11/20/2023</p>
               </div>
@@ -85,15 +140,15 @@ export default function VerificationKyc({ user }: any) {
               <div className={styles.userDetailsText}>
                 <h4>DNI: </h4>
                 <p>53408u4o</p>
-              </div>
+              </div> */}
 
               <div className={styles.userDetailsText}>
                 <h4>Nationality: </h4>
-                <p>Palestine</p>
+                <p>{userVerData.nationality}</p>
               </div>
-              <div className={styles.userDetailsText}>
+              {/* <div className={styles.userDetailsText}>
                 <h4>Registered Address:</h4>
-              </div>
+              </div> */}
             </div>
           </div>
           <div>
@@ -106,11 +161,23 @@ export default function VerificationKyc({ user }: any) {
                   height="30"
                   width="30"
                 />
-                <h3>Tenant Identification Selfie</h3>
+                <h3>Tenant ID </h3>
+              </div>
+              <div>
+                {docImage ? (
+                  <Image
+                    src={docImage}
+                    alt="user icon"
+                    height="300"
+                    width="400"
+                  />
+                ) : (
+                  <p></p>
+                )}
               </div>
             </div>
 
-            <div id={styles.tenantSelfie}>
+            {/* <div id={styles.tenantSelfie}>
               <div className={styles.headerUserDetails}>
                 <Image
                   className={styles.mailStyle}
@@ -121,7 +188,8 @@ export default function VerificationKyc({ user }: any) {
                 />
                 <h3>Tenant Identification Selfie</h3>
               </div>
-            </div>
+              <img></img>
+            </div> */}
           </div>
 
           <div id={styles.tenantSelfie}>
@@ -137,6 +205,9 @@ export default function VerificationKyc({ user }: any) {
             </div>
           </div>
         </article>
+        <button onClick={handleApproveClick} className={styles.approveButton}>
+          Approve
+        </button>
       </section>
     </main>
   );

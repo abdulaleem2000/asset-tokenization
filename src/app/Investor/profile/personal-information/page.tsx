@@ -17,40 +17,40 @@ interface UserData {
 export default function PersonalInformation() {
   const [loadingData, setIsLoadingData] = useState(true);
   const [userData, setUserData] = useState<UserData>({});
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState<string>("");
 
-  // const fileBase64 = (file: File) => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   const data = new Promise((resolve, reject) => {
-  //     reader.onload = () => resolve(reader.result);
-  //     reader.onerror = (err) => reject(err);
-  //   });
-
-  //   return data;
-  // };
-
-  const fileBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-
-      reader.readAsArrayBuffer(file);
-
-      reader.onload = () => {
-        if (reader.result instanceof ArrayBuffer) {
-          const binaryData = new Buffer(reader.result); // or use Buffer.from(reader.result)
-          const base64String = binaryData.toString("base64");
-          resolve(base64String);
-        } else {
-          reject(new Error("Failed to read file as ArrayBuffer."));
-        }
-      };
-
-      reader.onerror = (err) => {
-        reject(err);
-      };
+  const fileBase64 = (file: any) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    const data = new Promise((resolve, reject) => {
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (err) => reject(err);
     });
+
+    return data;
   };
+
+  // const fileBase64 = (file: File): Promise<string> => {
+  //   return new Promise((resolve, reject) => {
+  //     const reader = new FileReader();
+
+  //     reader.readAsArrayBuffer(file);
+
+  //     reader.onload = () => {
+  //       if (reader.result instanceof ArrayBuffer) {
+  //         const binaryData = new Buffer(reader.result); // or use Buffer.from(reader.result)
+  //         const base64String = binaryData.toString("base64");
+  //         resolve(base64String);
+  //       } else {
+  //         reject(new Error("Failed to read file as ArrayBuffer."));
+  //       }
+  //     };
+
+  //     reader.onerror = (err) => {
+  //       reject(err);
+  //     };
+  //   });
+  // };
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -69,8 +69,12 @@ export default function PersonalInformation() {
       // reader.readAsArrayBuffer(selectedFile);
 
       const file64 = await fileBase64(selectedFile);
-      setFile(file64);
-      console.log(file64);
+      if (typeof file64 === "string") {
+        setFile(file64);
+      }
+      console.log(typeof file64);
+
+      console.log(file);
     }
   };
   //S console.log(file);
@@ -357,7 +361,7 @@ export default function PersonalInformation() {
                     />
                     <div>
                       <h4>ID or Passport</h4>
-                      <p>Upload File</p>
+                      <p>Upload Image</p>
                       <input
                         type="file"
                         name="idDocument"
@@ -366,7 +370,7 @@ export default function PersonalInformation() {
                       />
                     </div>
                   </article>
-                  <article className={styles.legalRequirement}>
+                  {/* <article className={styles.legalRequirement}>
                     <Image
                       src="/profile/icons/upload-icon-main.svg"
                       alt="Upload Icon"
@@ -389,7 +393,7 @@ export default function PersonalInformation() {
                       <h4>Article of Association</h4>
                       <p>Upload File or Drag and drop</p>
                     </div>
-                  </article>
+                  </article> */}
                 </div>
               </article>
               <button type="submit">Submit Now</button>

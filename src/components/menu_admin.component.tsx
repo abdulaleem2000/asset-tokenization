@@ -208,7 +208,7 @@ export default function Menu({ userData }: any) {
 
       <article className={styles.menuArticle}>
         <h4>GENERAL</h4>
-        <article className={styles.menuOption}>
+        {/* <article className={styles.menuOption}>
           <Image
             src="/dashboard/menu/icons/settings-icon-black.svg"
             alt="Settings Icon"
@@ -233,7 +233,7 @@ export default function Menu({ userData }: any) {
             />
             <p>Profile</p>
           </Link>
-        </article>
+        </article> */}
         <article className={styles.menuOption} onClick={logout}>
           <Image
             src="/dashboard/menu/icons/logout-icon-black.svg"

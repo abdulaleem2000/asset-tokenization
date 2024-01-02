@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "@/styles/components/menu.module.sass";
 import { MenuProps } from "@/types/props/menu-props.interface";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Menu({ userData }: any) {
   const router = useRouter();
@@ -34,7 +34,13 @@ export default function Menu({ userData }: any) {
 
       <article className={styles.menuArticle}>
         <h4>MENU</h4>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/Investor/dashboard"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/Investor/dashboard">
             <Image
               src="/dashboard/menu/icons/homepage-icon-white.svg"
@@ -45,7 +51,13 @@ export default function Menu({ userData }: any) {
             <p>Homepage</p>
           </Link>
         </article>
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/Investor/wallet"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/Investor/wallet">
             <Image
               src="/dashboard/menu/icons/wallet-icon-black.svg"
@@ -78,7 +90,13 @@ export default function Menu({ userData }: any) {
             <p>Messages</p>
           </Link>
         </article> */}
-        <article className={styles.menuOption}>
+        <article
+          className={
+            usePathname() === "/Investor/investments-made"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/Investor/investments-made">
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
@@ -92,7 +110,13 @@ export default function Menu({ userData }: any) {
       </article>
       <article className={styles.menuArticle}>
         <h4>CATEGORIES</h4>
-        <article className={`${styles.menuOption} `}>
+        <article
+          className={
+            usePathname() === "/Investor/investments"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
           <Link href="/Investor/investments">
             <Image
               src="/dashboard/menu/icons/building-4.svg"
@@ -142,8 +166,14 @@ export default function Menu({ userData }: any) {
           />
           <p>Settings</p>
         </article>
-        <article className={styles.menuOption}>
-          <Link href="/profile">
+        <article
+          className={
+            usePathname() === "/Investor/profile"
+              ? styles.menuOptionActive
+              : styles.menuOption
+          }
+        >
+          <Link href="/Investor/profile">
             <Image
               src="/dashboard/menu/icons/user-icon-black.svg"
               alt="User Icon"

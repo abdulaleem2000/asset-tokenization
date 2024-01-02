@@ -42,7 +42,7 @@ export default function UserPreview() {
         <div className={Styles.main}>
           <h4>Total Users</h4>
           <h1>{userCount}</h1>
-          <p>Verified Users</p>
+          <p>Users</p>
         </div>
 
         {/* <div className={Styles.main}>
