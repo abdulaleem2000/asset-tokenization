@@ -9,12 +9,15 @@ import axios from "axios";
 import router from "next/router";
 import { Toaster, toast } from "react-hot-toast";
 import { read } from "fs";
+import { useRouter } from "next/navigation";
 interface UserData {
   _id?: string;
 
   // other properties...
 }
 export default function PersonalInformation() {
+  const router = useRouter();
+
   const [loadingData, setIsLoadingData] = useState(true);
   const [userData, setUserData] = useState<UserData>({});
   const [file, setFile] = useState<string>("");
@@ -165,6 +168,7 @@ export default function PersonalInformation() {
         throw new Error("HTTP error! status: " + response.status);
 
       toast.success(response.data.message);
+      router.push("/Investor/dashboard");
     } catch (error) {
       console.log(error);
     }
