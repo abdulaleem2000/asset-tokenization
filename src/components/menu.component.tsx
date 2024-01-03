@@ -34,14 +34,14 @@ export default function Menu({ userData }: any) {
 
       <article className={styles.menuArticle}>
         <h4>MENU</h4>
-        <article
-          className={
-            usePathname() === "/Investor/dashboard"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/Investor/dashboard">
+        <Link href="/Investor/dashboard">
+          <article
+            className={
+              usePathname() === "/Investor/dashboard"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/homepage-icon-white.svg"
               alt="Homapage Icon"
@@ -49,16 +49,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Homepage</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/Investor/wallet"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/Investor/wallet">
+          </article>
+        </Link>
+        <Link href="/Investor/wallet">
+          <article
+            className={
+              usePathname() === "/Investor/wallet"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/wallet-icon-black.svg"
               alt="Wallet Icon"
@@ -66,10 +66,10 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Wallet</p>
-          </Link>
-        </article>
-        <article className={styles.menuOption}>
-          <Link href="">
+          </article>
+        </Link>
+        <Link href="">
+          <article className={styles.menuOption}>
             <Image
               src="/dashboard/menu/icons/bookmark-icon-black.svg"
               alt="Bookmark Icon"
@@ -77,8 +77,8 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Training</p>
-          </Link>
-        </article>
+          </article>
+        </Link>
         {/* <article className={styles.menuOption}>
           <Link href="/messages">
             <Image
@@ -90,14 +90,14 @@ export default function Menu({ userData }: any) {
             <p>Messages</p>
           </Link>
         </article> */}
-        <article
-          className={
-            usePathname() === "/Investor/investments-made"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/Investor/investments-made">
+        <Link href="/Investor/investments-made">
+          <article
+            className={
+              usePathname() === "/Investor/investments-made"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
               alt="Dollar Icon"
@@ -105,19 +105,19 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Investments</p>
-          </Link>
-        </article>
+          </article>
+        </Link>
       </article>
       <article className={styles.menuArticle}>
         <h4>CATEGORIES</h4>
-        <article
-          className={
-            usePathname() === "/Investor/investments"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/Investor/investments">
+        <Link href="/Investor/investments">
+          <article
+            className={
+              usePathname() === "/Investor/investments"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/building-4.svg"
               alt="Dollar Icon"
@@ -128,9 +128,10 @@ export default function Menu({ userData }: any) {
               {/* <input type="checkbox" className={styles.categoryBox} />{" "} */}
               Properties
             </p>
-          </Link>
-          {/* <p>40</p> */}
-        </article>
+
+            {/* <p>40</p> */}
+          </article>
+        </Link>
         {/* <article className={`${styles.menuOption} ${styles.categoryOption}`}>
           <p>
             <input type="checkbox" className={styles.categoryBox} /> Venture
@@ -166,14 +167,14 @@ export default function Menu({ userData }: any) {
           />
           <p>Settings</p>
         </article>
-        <article
-          className={
-            usePathname() === "/Investor/profile"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/Investor/profile">
+        <Link href="/Investor/profile">
+          <article
+            className={
+              usePathname() === "/Investor/profile"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/user-icon-black.svg"
               alt="User Icon"
@@ -181,8 +182,8 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Profile</p>
-          </Link>
-        </article>
+          </article>
+        </Link>
         <article className={styles.menuOption} onClick={logout}>
           <Image
             src="/dashboard/menu/icons/logout-icon-black.svg"

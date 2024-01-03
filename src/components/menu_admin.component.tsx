@@ -34,14 +34,14 @@ export default function Menu({ userData }: any) {
 
       <article className={styles.menuArticle}>
         <h4>MENU</h4>
-        <article
-          className={
-            usePathname() === "/admin/dashboard"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/dashboard">
+        <Link href="/admin/dashboard">
+          <article
+            className={
+              usePathname() === "/admin/dashboard"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/homepage-icon-white.svg"
               alt="Homapage Icon"
@@ -49,16 +49,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Homepage</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/properties"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/properties">
+          </article>
+        </Link>
+        <Link href="/admin/properties">
+          <article
+            className={
+              usePathname() === "/admin/properties"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/building-4.svg"
               alt="Building Icon"
@@ -66,16 +66,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Properties</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/properties-management"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/properties-management">
+          </article>
+        </Link>
+        <Link href="/admin/properties-management">
+          <article
+            className={
+              usePathname() === "/admin/properties-management"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/building-4.svg"
               alt="Building Icon"
@@ -83,16 +83,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Properties Management</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/users"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/users">
+          </article>
+        </Link>
+        <Link href="/admin/users">
+          <article
+            className={
+              usePathname() === "/admin/users"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/user-icon-black.svg"
               alt="Bookmark Icon"
@@ -100,16 +100,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Users</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/verification"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/verification">
+          </article>
+        </Link>
+        <Link href="/admin/verification">
+          <article
+            className={
+              usePathname() === "/admin/verification"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/tick-circle.svg"
               alt="Tick Icon"
@@ -117,16 +117,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Verification</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/privately-config"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/privately-config">
+          </article>
+        </Link>
+        <Link href="/admin/privately-config">
+          <article
+            className={
+              usePathname() === "/admin/privately-config"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
               alt="Dollar Icon"
@@ -134,16 +134,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Privately Configuration</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/payment-history"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/payment-history">
+          </article>
+        </Link>
+        <Link href="/admin/payment-history">
+          <article
+            className={
+              usePathname() === "/admin/payment-history"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/wallet-icon-black.svg"
               alt="Wallet Icon"
@@ -151,16 +151,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Payment History</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/shipping-history"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/shipping-history">
+          </article>
+        </Link>
+        <Link href="/admin/shipping-history">
+          <article
+            className={
+              usePathname() === "/admin/shipping-history"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/shipping-box-02.svg"
               alt="Shipping Icon"
@@ -168,16 +168,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Shipping History</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/profit-history"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/profit-history">
+          </article>
+        </Link>
+        <Link href="/admin/profit-history">
+          <article
+            className={
+              usePathname() === "/admin/profit-history"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/dollar-icon-black.svg"
               alt="Dollar Icon"
@@ -185,16 +185,16 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Profit History</p>
-          </Link>
-        </article>
-        <article
-          className={
-            usePathname() === "/admin/create-token"
-              ? styles.menuOptionActive
-              : styles.menuOption
-          }
-        >
-          <Link href="/admin/create-token">
+          </article>
+        </Link>
+        <Link href="/admin/create-token">
+          <article
+            className={
+              usePathname() === "/admin/create-token"
+                ? styles.menuOptionActive
+                : styles.menuOption
+            }
+          >
             <Image
               src="/dashboard/menu/icons/plus-icon.svg"
               alt="Wallet Icon"
@@ -202,8 +202,8 @@ export default function Menu({ userData }: any) {
               height="24"
             />
             <p>Create Token</p>
-          </Link>
-        </article>
+          </article>
+        </Link>
       </article>
 
       <article className={styles.menuArticle}>
