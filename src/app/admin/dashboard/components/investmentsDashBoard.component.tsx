@@ -8,6 +8,9 @@ const InvestmentsDashBoard = (props: any) => {
     6
   )}....${userAddress.substring(userAddress.length - 5)}`;
 
+  const propertyName = props.data.query.split(":");
+  console.log(propertyName);
+
   return (
     <div>
       <div className={styles.userInvestment}>
@@ -19,17 +22,27 @@ const InvestmentsDashBoard = (props: any) => {
             height="56"
           />
           <div>
-            <h4>{props.data.query}</h4>
-            <p>{shortenedAddress}</p>
+            <h4>{propertyName[0]}</h4>
+            {/* <p>{props.data.userEmail}</p> */}
             {/* <p>02/16/2024</p> */}
+          </div>
+        </div>
+
+        <div className={styles.investmentPart}>
+          <div>
+            <h4>{props.data.tokenPurchase.toString()} token</h4>
+            <p>Matic Wallet</p>
           </div>
         </div>
         <div
           className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
         >
           <div>
-            <h4>{props.data.tokenPurchase.toString()}</h4>
-            <p>Matic Wallet</p>
+            <div className={styles.lessonCompleted}>
+              <p>Completed</p>
+            </div>
+            {/* <p>{props.data.userEmail}</p> */}
+            {/* <p>02/16/2024</p> */}
           </div>
         </div>
       </div>

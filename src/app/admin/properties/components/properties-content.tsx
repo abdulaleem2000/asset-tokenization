@@ -11,10 +11,11 @@ import {
   PromiseLikeOfReactNode,
   useState,
 } from "react";
-
+import { tokenContract } from "@/types/constants/contract-address";
 export default function PropertiesContent() {
   //const contractAddress = "0x5Ff135846589d6B492c1928541d0F0bD7FE68f27";
-  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  //const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  const contractAddress = tokenContract;
   const { contract } = useContract(contractAddress);
 
   const [assetData, setAssetData] = useState({});

@@ -7,10 +7,10 @@ export default function ContentHeader({ userData }: any) {
   return (
     <main>
       <article id={styles.contentHeader}>
-        <div className={styles.contentHeaderPart}>
-          <div>
-            <h2>Good Morning</h2>
-          </div>
+        <div>
+          <h2>Good Morning</h2>
+        </div>
+        {/* <div className={styles.contentHeaderPart}>
           <div className={styles.contentHeaderPart}>
             <SearchBar category={"TOP-BAR"} />
             <Image
@@ -20,7 +20,7 @@ export default function ContentHeader({ userData }: any) {
               height="25"
             />
           </div>
-        </div>
+        </div> */}
         {/* <div id={styles.completeUserAlert}>
           <Image
             src="/dashboard/content/icons/alert-bell-main.png"

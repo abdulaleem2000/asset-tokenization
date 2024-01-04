@@ -16,7 +16,7 @@ export default function Payment(props: any) {
           />
         </div>
         <div className={styles.content}>
-          <h3>Esther</h3>
+          <h3>{props.data.userEmail}</h3>
           <p>{props.data.userAddress}</p>
         </div>
         <div className={styles.content}>

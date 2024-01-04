@@ -15,9 +15,12 @@ import {
   useContractEvents,
 } from "@thirdweb-dev/react";
 
+import { tokenContract } from "@/types/constants/contract-address";
+
 import { set } from "mongoose";
 import { validateHeaderValue } from "http";
 import { LogDescription } from "ethers/lib/utils";
+import { utils } from "ethers";
 
 export default function AddProperty() {
   const router = useRouter();
@@ -31,7 +34,9 @@ export default function AddProperty() {
   const [tokenPrice, setTokenPrice] = useState("");
   const [Web3ButtonDisplay, setWeb3ButtonDisplay] = useState(false);
   //const contractAddress = "0x5Ff135846589d6B492c1928541d0F0bD7FE68f27";
-  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  //client address
+  // const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  const contractAddress = tokenContract;
   const { contract } = useContract(contractAddress);
 
   const { mutateAsync, isLoading, error } = useContractWrite(contract, "mint");
@@ -129,8 +134,8 @@ export default function AddProperty() {
         netAmountRent: netAmountRent.value,
         interestPayment: interestPayment.value,
         numberOfTokens: numberOfTokens.value,
-        tokenPrice: tokenPrice.value,
-        minInvestment: minInvestment.value,
+        tokenPrice: utils.parseEther(tokenPrice.value),
+        minInvestment: utils.parseEther(minInvestment.value),
         homeInterest: homeInterest.value,
         deadline: deadlineStr,
       });

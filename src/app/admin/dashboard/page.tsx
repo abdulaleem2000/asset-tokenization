@@ -21,10 +21,12 @@ import {
   ReactPortal,
   useEffect,
 } from "react";
+import { tokenContract } from "@/types/constants/contract-address";
 
 export default function Dashboard({ user }: any) {
   //fetching investments from smart contract
-  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  //const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  const contractAddress = tokenContract;
 
   const { contract } = useContract(contractAddress);
   const { data, isLoading, error } = useContractRead(
@@ -150,16 +152,16 @@ export default function Dashboard({ user }: any) {
                 <div className={styles.containerTop}>
                   <div>
                     <h3>Investments</h3>
-                    <p className={styles.grayedText}>All of my investments</p>
+                    <p className={styles.grayedText}>All investments</p>
                   </div>
                   <div>
-                    <p>This Month</p>
+                    {/* <p>This Month</p>
                     <Image
                       src="/dashboard/content/icons/arrow-down-black.svg"
                       alt="Arrow Down Black"
                       height="16"
                       width="16"
-                    />
+                    /> */}
                   </div>
                 </div>
                 {data?.map(

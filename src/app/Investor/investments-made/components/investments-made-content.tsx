@@ -12,10 +12,21 @@ import {
   ReactElement,
   ReactNode,
   ReactPortal,
+  useEffect,
+  useState,
 } from "react";
+import { tokenContract } from "@/types/constants/contract-address";
+import axios from "axios";
+
+interface data {
+  email?: string;
+}
+
 export default function PaymentContent() {
+  const [userData, setUserData] = useState<data>({});
   //const contractAddress = "0x5Ff135846589d6B492c1928541d0F0bD7FE68f27";
-  const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  //const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  const contractAddress = tokenContract;
 
   const { contract } = useContract(contractAddress);
   const { data, isLoading, error } = useContractRead(
@@ -24,6 +35,19 @@ export default function PaymentContent() {
   );
   const address = useAddress();
   console.log(address);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await axios.get("/api/data/dashboard");
+
+      return response.data;
+    }
+
+    getData().then((dataResponse) => {
+      setUserData(dataResponse.user);
+    });
+  }, []);
+  console.log(userData.email);
 
   return (
     <div>
@@ -39,7 +63,7 @@ export default function PaymentContent() {
             </div>
           </article>
           <article id={styles.investmentsContainer}>
-            {data.map(
+            {data?.map(
               (dataMap: {
                 [x: string]: ReactNode;
                 name:
@@ -54,7 +78,7 @@ export default function PaymentContent() {
                   | undefined;
               }) =>
                 // eslint-disable-next-line react/jsx-key
-                dataMap.userAddress == address ? (
+                dataMap.userEmail == userData.email ? (
                   // eslint-disable-next-line react/jsx-key
                   <Investment data={dataMap}></Investment>
                 ) : (

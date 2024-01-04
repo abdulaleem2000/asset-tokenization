@@ -11,14 +11,20 @@ import Image from "next/image";
 import ContentHeader from "@/components/content-header_admin";
 import { useContractWrite, useContract, Web3Button } from "@thirdweb-dev/react";
 import { Toaster, toast } from "react-hot-toast";
+import { tokenContractSale } from "@/types/constants/contract-address";
 
+interface data {
+  email?: string;
+}
 const ViewInvestment = () => {
   const searchParams = useSearchParams();
   const data1 = searchParams.get("numberOfTokens");
   console.log("data", data1);
-  const [userData, setUserData] = useState("userData");
+  const [userData, setUserData] = useState<data>({});
   //const contractAddress = "0x0d49Fcb0812bB41407ecD528f83Fa5C688E546f9";
-  const contractAddress = "0xc1C3716981f18A488f2cb96fdac7AA408F9fFdf7";
+  //client address
+  // const contractAddress = "0xc1C3716981f18A488f2cb96fdac7AA408F9fFdf7";
+  const contractAddress = tokenContractSale;
 
   const { contract } = useContract(contractAddress);
   const { mutateAsync, isLoading, error } = useContractWrite(
@@ -27,7 +33,7 @@ const ViewInvestment = () => {
   );
   const name = searchParams.get("name");
   const direction = searchParams.get("direction");
-  const query = name! + direction;
+  const query = name! + ":" + direction;
   console.log(query);
 
   const [amount, setAmount] = useState("");
@@ -53,6 +59,8 @@ const ViewInvestment = () => {
       setUserData(dataResponse.user);
     });
   }, []);
+  console.log(userData.email);
+
   return (
     <main id={styles.InvestmentView}>
       <Menu userData={userData} />
@@ -144,7 +152,7 @@ const ViewInvestment = () => {
               // Calls the "setName" function on your smart contract with "My Name" as the first argument
               action={() =>
                 mutateAsync({
-                  args: [query],
+                  args: [query, userData.email],
                   overrides: {
                     value: utils.parseEther(amount), // send 0.1 native token with the contract call
                   },

@@ -215,7 +215,7 @@ export default function Dashboard({ user }: any) {
               </article>
             </article>
           </section>
-          <section id={styles.bottomContentBody}>
+          {/* <section id={styles.bottomContentBody}>
             <article id={styles.transactionStadisticsContainer}>
               <div className={styles.containerTop}>
                 <div>
@@ -285,10 +285,10 @@ export default function Dashboard({ user }: any) {
               <hr />
               <div></div>
             </article>
-          </section>
+          </section> */}
         </article>
       </section>
-      <ChatPreview />
+      {/* <ChatPreview /> */}
       <Link href="/Investor/qna">
         <div className={styles.stickyChatbotButton}>
           Frequently Asked Questions
