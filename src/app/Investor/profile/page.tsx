@@ -8,9 +8,39 @@ import Menu from "@/components/menu.component";
 import ContentHeader from "@/components/content-header.component";
 import axios from "axios";
 
+interface data {
+  name?: string;
+  surname?: string;
+  dob?: string;
+  representing_company?: boolean;
+  region?: string;
+  postal_code?: number;
+  phone_number?: string;
+  nationality?: string;
+  id?: string;
+  country?: string;
+
+  company_tax_id?: string;
+
+  company_region?: string;
+  company_postal_code?: string;
+  company_name?: string;
+
+  company_country?: string;
+
+  company_city?: string;
+
+  company_address?: string;
+
+  city?: string;
+
+  address?: string;
+
+  email?: string;
+}
 export default function Profile() {
   const [loadingData, setIsLoadingData] = useState(true);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState<data>({});
 
   useEffect(() => {
     async function getData() {
@@ -48,56 +78,140 @@ export default function Profile() {
             </div>
           </Link>
           <br></br>
+
+          <h1>Personal Information</h1>
+          <hr />
+          <br />
           <div className={styles.profileSection}>
-            <h2>Personal Information</h2>
-            <br />
-            <p>
-              <strong>Name:</strong> a;li
-            </p>
-            <p>
-              <strong>Surname:</strong> Doe
-            </p>
-            <p>
-              <strong>Nationality:</strong> Some Nationality
-            </p>
+            <div>
+              <h3>
+                <strong>Name:</strong> {userData.name}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Last Name:</strong> {userData.surname}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Nationality:</strong> {userData.nationality}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>DOB:</strong> {userData.dob}
+              </h3>
+            </div>
+          </div>
+
+          <h1>Contact Information</h1>
+          <hr />
+          <br />
+          <div className={styles.profileSection}>
+            <div>
+              <h3>
+                <strong>Phone Number:</strong> {userData.phone_number}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>ID:</strong> {userData.id}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Email:</strong> {userData.email}
+              </h3>
+            </div>
+          </div>
+          <h2>Address Information</h2>
+          <hr />
+          <br />
+          <div className={styles.profileSection}>
+            <div>
+              <h3>
+                <strong>Address:</strong> {userData.address}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>City:</strong> {userData.city}
+              </h3>
+            </div>
           </div>
 
           <div className={styles.profileSection}>
-            <h2>Contact Information</h2>
-            <br />
-            <p>
-              <strong>Phone Number:</strong> +123456789
-            </p>
-            <p>
-              <strong>ID:</strong> ABC123
-            </p>
+            <div>
+              <h3>
+                <strong>Region:</strong> {userData.region}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Postal Code:</strong> {userData.postal_code}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Country:</strong> {userData.country}
+              </h3>
+            </div>
+          </div>
+
+          <h2>Company Information</h2>
+          <hr />
+          <br />
+          <div className={styles.profileSection}>
+            <div>
+              <h3>
+                <strong>Company Name:</strong> {userData.company_name}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Company City:</strong> {userData.company_city}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Company Country:</strong> {userData.company_country}
+              </h3>
+            </div>
           </div>
 
           <div className={styles.profileSection}>
-            <h2>Address Information</h2>
-            <br />
-            <p>
-              <strong>Address:</strong> 123 Main St, Cityville
-            </p>
-            <p>
-              <strong>City:</strong> Cityville
-            </p>
+            <div>
+              <h3>
+                <strong>Company Address:</strong> {userData.company_address}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Company Region:</strong> {userData.company_region}
+              </h3>
+            </div>
           </div>
 
           <div className={styles.profileSection}>
-            <h2>Company Information</h2>
-            <br />
-            <p>
-              <strong>Representing Company:</strong> XYZ Corporation
-            </p>
-            <p>
-              <strong>Company Name:</strong> XYZ Corp
-            </p>
+            <div>
+              <h3>
+                <strong>Company Postal Code:</strong>{" "}
+                {userData.company_postal_code}
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <strong>Company Tax ID:</strong> {userData.company_tax_id}
+              </h3>
+            </div>
           </div>
         </div>
+
         {/* <h1>Profile Details</h1>
         <article id={styles.userSummary}>
           <Image
+          
             src="/dashboard/menu/icons/user-icon-black.svg"
             alt="User Image"
             width="69"

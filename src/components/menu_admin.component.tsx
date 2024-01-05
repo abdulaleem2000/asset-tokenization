@@ -119,7 +119,7 @@ export default function Menu({ userData }: any) {
             <p>Verification</p>
           </article>
         </Link>
-        <Link href="/admin/privately-config">
+        {/* <Link href="/admin/privately-config">
           <article
             className={
               usePathname() === "/admin/privately-config"
@@ -135,11 +135,11 @@ export default function Menu({ userData }: any) {
             />
             <p>Privately Configuration</p>
           </article>
-        </Link>
-        <Link href="/admin/payment-history">
+        </Link> */}
+        <Link href="/admin/investments-made">
           <article
             className={
-              usePathname() === "/admin/payment-history"
+              usePathname() === "/admin/investments-made"
                 ? styles.menuOptionActive
                 : styles.menuOption
             }
@@ -153,7 +153,7 @@ export default function Menu({ userData }: any) {
             <p>Payment History</p>
           </article>
         </Link>
-        <Link href="/admin/shipping-history">
+        {/* <Link href="/admin/shipping-history">
           <article
             className={
               usePathname() === "/admin/shipping-history"
@@ -169,8 +169,8 @@ export default function Menu({ userData }: any) {
             />
             <p>Shipping History</p>
           </article>
-        </Link>
-        <Link href="/admin/profit-history">
+        </Link> */}
+        {/* <Link href="/admin/profit-history">
           <article
             className={
               usePathname() === "/admin/profit-history"
@@ -203,7 +203,7 @@ export default function Menu({ userData }: any) {
             />
             <p>Create Token</p>
           </article>
-        </Link>
+        </Link> */}
       </article>
 
       <article className={styles.menuArticle}>

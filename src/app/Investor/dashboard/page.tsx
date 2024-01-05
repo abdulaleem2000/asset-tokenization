@@ -1,18 +1,45 @@
+/* eslint-disable react/jsx-no-undef */
 "use client";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/dashboard.module.sass";
 import SingupLayout from "@/layouts/singup-layout";
-import { ReactNode, useEffect } from "react";
+import {
+  JSXElementConstructor,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useEffect,
+} from "react";
 import Menu from "@/components/menu.component";
 import ContentHeader from "@/components/content-header.component";
 import axios from "axios";
 import { useState } from "react";
 import ChatPreview from "@/components/chat-preview.component";
-import { ConnectWallet, lightTheme } from "@thirdweb-dev/react";
+import {
+  ConnectWallet,
+  lightTheme,
+  useContract,
+  useContractRead,
+} from "@thirdweb-dev/react";
+import { tokenContract } from "@/types/constants/contract-address";
+import InvestDash from "./components/investmentsDashBoard.component";
+
+interface data {
+  email?: string;
+}
 
 export default function Dashboard({ user }: any) {
-  const [userData, setUserData] = useState("userData");
+  const contractAddress = tokenContract;
+
+  const { contract } = useContract(contractAddress);
+  const { data, isLoading, error } = useContractRead(
+    contract,
+    "getInvestments"
+  );
+
+  const [userData, setUserData] = useState<data>({});
 
   useEffect(() => {
     async function getData() {
@@ -115,103 +142,53 @@ export default function Dashboard({ user }: any) {
             </article>
             <article className={styles.topContentPiece}>
               <article id={styles.investmentsContainer}>
-                <div className={styles.containerTop}>
-                  <div>
-                    <h3>Investments</h3>
-                    <p className={styles.grayedText}>All of my investments</p>
-                  </div>
-                  <div>
-                    <p>This Month</p>
+                <Link href="/Investor/investments-made">
+                  <div className={styles.containerTop}>
+                    <div>
+                      <h3>Investments</h3>
+                      <p className={styles.grayedText}>All my investments</p>
+                    </div>
+
+                    <div>
+                      {/* <p>This Month</p>
                     <Image
                       src="/dashboard/content/icons/arrow-down-black.svg"
                       alt="Arrow Down Black"
                       height="16"
                       width="16"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
+                    /> */}
                     </div>
                   </div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.userInvestment}>
-                    <div className={styles.investmentPart}>
-                      <Image
-                        src="/dashboard/content/investment-willson-apartment.png"
-                        alt="Investment Image"
-                        width="56"
-                        height="56"
-                      />
-                      <div>
-                        <h4>Willson Apartment</h4>
-                        <p>02/16/2024</p>
-                      </div>
-                    </div>
-                    <div
-                      className={`${styles.investmentPart} ${styles.lastInvestmentPart}`}
-                    >
-                      <div>
-                        <h4>26,89K ETH</h4>
-                        <p>Eth Wallet</p>
-                      </div>
-                      <div>
-                        <p>Success</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id={styles.investmentsButtons}>
+                </Link>
+                {data?.map(
+                  (dataMap: {
+                    [x: string]: ReactNode;
+                    name:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | Iterable<ReactNode>
+                      | ReactPortal
+                      | PromiseLikeOfReactNode
+                      | null
+                      | undefined;
+                  }) =>
+                    // eslint-disable-next-line react/jsx-key
+                    dataMap.userEmail == userData.email ? (
+                      // eslint-disable-next-line react/jsx-key
+                      <InvestDash data={dataMap}></InvestDash>
+                    ) : (
+                      // eslint-disable-next-line react/jsx-key
+                      <p></p>
+                    )
+                )}
+
+                {/* <div id={styles.investmentsButtons}>
                   <button>1</button>
                   <button>2</button>
                   <button>3</button>
-                </div>
+                </div> */}
               </article>
             </article>
           </section>

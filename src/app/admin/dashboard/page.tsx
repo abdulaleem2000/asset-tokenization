@@ -149,21 +149,23 @@ export default function Dashboard({ user }: any) {
             </article>
             <article className={styles.topContentPiece}>
               <article id={styles.investmentsContainer}>
-                <div className={styles.containerTop}>
-                  <div>
-                    <h3>Investments</h3>
-                    <p className={styles.grayedText}>All investments</p>
-                  </div>
-                  <div>
-                    {/* <p>This Month</p>
+                <Link href="/admin/investments-made">
+                  <div className={styles.containerTop}>
+                    <div>
+                      <h3>Investments</h3>
+                      <p className={styles.grayedText}>All investments</p>
+                    </div>
+                    <div>
+                      {/* <p>This Month</p>
                     <Image
                       src="/dashboard/content/icons/arrow-down-black.svg"
                       alt="Arrow Down Black"
                       height="16"
                       width="16"
                     /> */}
+                    </div>
                   </div>
-                </div>
+                </Link>
                 {data?.map(
                   (dataMap: {
                     [x: string]: ReactNode;
