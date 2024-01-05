@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "@/styles/pages/profile/profile.module.sass";
 import SingupLayout from "@/layouts/singup-layout";
 import { ReactNode, useEffect, useState } from "react";
-import Menu from "@/components/menu.component";
+import Menu from "@/components/menu_admin.component";
 import ContentHeader from "@/components/content-header.component";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -69,7 +69,7 @@ export default function Profile() {
   <img src="profile.jpg" alt="Profile Picture">
 </div> */}
         <div className={styles.profileContainer}>
-          <Link href="/Investor/profile/personal-information">
+          {/* <Link href="/Investor/profile/personal-information">
             <div id={styles.personalInformationContainer}>
               <h4>Edit Personal Information</h4>
               <Image
@@ -79,7 +79,7 @@ export default function Profile() {
                 height="24"
               />
             </div>
-          </Link>
+          </Link> */}
           <br></br>
 
           <h1>Personal Information</h1>
