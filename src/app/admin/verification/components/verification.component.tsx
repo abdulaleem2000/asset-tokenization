@@ -36,18 +36,33 @@ export default function Property(props: any) {
           <h3>Registration Date</h3>
           <p>{date[0]}</p>
         </div>
-        <div className={styles.content}>
-          <Link
-            href={{
-              pathname: "/admin/verification-kyc",
-              query: {
-                _id: props.data._id,
-              },
-            }}
-          >
-            {props.data.kyc ? <p></p> : <button> Verification KYC </button>}
-          </Link>
-        </div>
+        {props.data.kyc ? (
+          <div className={styles.content}>
+            <Link
+              href={{
+                pathname: "/admin/user-details",
+                query: {
+                  _id: props.data._id,
+                },
+              }}
+            >
+              <button>View User Details</button>
+            </Link>
+          </div>
+        ) : (
+          <div className={styles.content}>
+            <Link
+              href={{
+                pathname: "/admin/verification-kyc",
+                query: {
+                  _id: props.data._id,
+                },
+              }}
+            >
+              <button> Verification KYC </button>
+            </Link>
+          </div>
+        )}
       </div>
     </main>
   );

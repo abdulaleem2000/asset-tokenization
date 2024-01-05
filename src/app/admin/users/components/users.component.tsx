@@ -1,7 +1,10 @@
 import styles from "@/styles/pages/investments/components/investment.module.sass";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Users(props: any) {
+  console.log(props.data.kyc);
+
   return (
     <main id={styles.investment}>
       <div
@@ -43,15 +46,45 @@ export default function Users(props: any) {
           </div>
         </div>
       </div>
-      <div id={styles.viewContainer}>
-        <h4>Register Purchase</h4>
-        <Image
-          src="/dashboard/content/icons/arrow-right-main.svg"
-          alt="Arrow Icon Pointing Right"
-          height="24"
-          width="24"
-        />
-      </div>
+      {props.data.kyc ? (
+        <Link
+          href={{
+            pathname: "/admin/user-details",
+            query: {
+              _id: props.data._id,
+            },
+          }}
+        >
+          <div id={styles.viewContainer}>
+            <h4>View User Details</h4>
+            <Image
+              src="/dashboard/content/icons/arrow-right-main.svg"
+              alt="Arrow Icon Pointing Right"
+              height="24"
+              width="24"
+            />
+          </div>
+        </Link>
+      ) : (
+        <Link
+          href={{
+            pathname: "/admin/verification-kyc",
+            query: {
+              _id: props.data._id,
+            },
+          }}
+        >
+          <div id={styles.viewContainer}>
+            <h4>Verify User</h4>
+            <Image
+              src="/dashboard/content/icons/arrow-right-main.svg"
+              alt="Arrow Icon Pointing Right"
+              height="24"
+              width="24"
+            />
+          </div>
+        </Link>
+      )}
     </main>
   );
 }

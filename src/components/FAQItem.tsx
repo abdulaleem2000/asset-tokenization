@@ -15,7 +15,7 @@ const FAQItem = ({ id, question, answer }: any) => {
       <div
         style={{
           fontWeight: "bold",
-          color: "#3498db",
+          color: "#725DFF",
           backgroundColor: "#f0f0f0",
           borderRadius: "10px",
           fontSize: "larger",
