@@ -26,6 +26,8 @@ import { tokenContract } from "@/types/constants/contract-address";
 export default function Dashboard({ user }: any) {
   //fetching investments from smart contract
   //const contractAddress = "0x1f7CC67Ce6745E6c2cd7811e6169139979Bd37BD";
+  console.log("date", Date.now());
+
   const contractAddress = tokenContract;
 
   const { contract } = useContract(contractAddress);

@@ -2,7 +2,17 @@ import dbConnect from "@/lib/mongoConnection";
 import User from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
 import { getDataFromToken } from "@/utils/getDataFromToken";
-
+import { JwtPayload, jwtDecode } from "jwt-decode";
+import { TokenData } from "@/types/constants/token-data.interface";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
+interface CustomJwtPayload extends JwtPayload {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+  is_verified: boolean;
+}
 export async function POST(request: NextRequest) {
   try {
     await dbConnect();
@@ -51,6 +61,20 @@ export async function POST(request: NextRequest) {
     user.is_verified = true;
     user.verify_token = undefined;
     user.verify_token_expiry = undefined;
+    // const tokenData: TokenData = {
+    //   id: user._id,
+    //   username: user.username,
+    //   email: user.email,
+    //   role: user.rol,
+    //   is_verified: user.is_verified,
+    // };
+    // const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+    //   expiresIn: "1d",
+    // });
+
+    // cookies().set("token", token, {
+    //   httpOnly: true,
+    // });
     await user.save();
 
     return NextResponse.json({

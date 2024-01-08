@@ -3,4 +3,5 @@ export interface TokenData {
   username: string;
   email: string;
   role: string;
+  is_verified: boolean;
 }
